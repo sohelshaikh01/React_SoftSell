@@ -2,64 +2,110 @@
 
 Softsell is a marketplace to buy, sell, and get valuations for new or used software licenses. Maximize the value of your unused software.
 
-Live Here: [softsell-myapp.netlify.app](https://softsell-myapp.netlify.app)
+🔗 **Live Here:** [softsell-myapp.netlify.app](https://softsell-myapp.netlify.app)
 
-## Tech Stack Used
+---
 
-`Html`
+## 🛠 Tech Stack Used
 
-`Tailwind CSS` for styling
+- **HTML**
+- **Tailwind CSS** – for fast and responsive UI styling
+- **React** – for building the application
+- **Netlify** – for deployment
+- **GitHub** – for version control & documentation
 
-`React` for Application Building
+---
 
-`Netlify` for Deployment
+## 🚀 Getting Started
 
-`GitHub` for Repository and Documentation
+To run this project locally, make sure you have `node` and `npm` or `yarn` installed.
 
-## Feature Implemented
+```bash
+# Install Vite + React app
+npm create vite@latest softsell -- --template react
+cd softsell
 
-- Check Lisence Valuation
-- Sell the Lisence
-- Contact Form (Validation only)
-- Light and Dark Mode for user preference.
+# Install dependencies
+npm install
 
-## Design Features
+# Run the development server
+npm run dev
+````
 
-- Implement Different Colors for sepration of sections.
-- Colors sepration for Light and Dark Theme.
+Or with Yarn:
 
-Light Mode:
+```bash
+yarn create vite softsell --template react
+cd softsell
+yarn
+yarn dev
+```
 
-![Ligth Mode](./src/assets/softsell-lightmode.jpg)
+---
 
-Dark Mode:
+## ✅ Features Implemented
 
-![Dark Mode](./src/assets/softsell-darkmode.jpg)
+* ✅ License Valuation Checker
+* ✅ Sell Your License Interface
+* ✅ Contact Form with Frontend Validation
+* ✅ Light & Dark Mode Toggle
+
+---
+
+## 🎨 Design Features
+
+* Color-coded sections for better visual separation
+* Seamless Light and Dark Theme support
+
+### 🌞 Light Mode:
+
+![Light Mode](./src/assets//softsell-lightmode.jpg)
+
+### 🌙 Dark Mode:
+
+![Dark Mode](./src/assets//softsell-darkmode.jpg)
+
+---
+
+## Differenct Sections
+
+**Benefits Section**
+
+![Benefits](./src/assets//softsell-benefits.jpg)
+
+**Reviews Section**
+
+![Reviews](./src/assets//softsell-reviews.jpg)
+
+**Contact Form**
+
+![Contact Form](./src/assets//softsell-contact.jpg)
 
 
-## Time spent
+## ⏱ Time Spent
 
-Total Time Spent is 10hrs.
+**Total Time: \~10 Hours**
 
-- 7 Hours for Coding and Debugging.
-- 3 Hours for Design and Responsiveness
+* 💻 7 Hours – Development & Debugging
+* 🎨 3 Hours – Design & Responsiveness
 
-features implemented, design choices, and time spent
+---
 
-## Folder Structure
+## 📁 Folder Structure
 
-Professional folder structure for maintainablity and scalability.
+Organized for scalability and maintainability:
 
-    src/
-        assets          - All Images, media in projects
-        components      - Reusable components
-        json-data       - All Data JSON used in app
-        layouts         - Different Layout Section
-        pages           - Pages shown in app
-        redux           - Redux for Theme Modes
-        app.jsx         
-        index.css       
-        main.jsx        - Wrapper for whole app
+```
+src/
+├── assets/         # All images and media files
+├── components/     # Reusable UI components
+├── json-data/      # Static JSON data files
+├── layouts/        # Page layout structures
+├── pages/          # Route-specific pages
+├── redux/          # Redux logic for theme toggle
+├── App.jsx
+├── index.css
+└── main.jsx        # App entry point
 
-    index.html          - Starting point of all app
-
+index.html          # Main HTML entry
+```

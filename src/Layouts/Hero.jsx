@@ -9,6 +9,17 @@ const Hero = () => {
   const [quantity, setQuantity] = useState(1);
   const [years, setYears] = useState(1);
   const [error, setError] = useState(null);
+  const [showCard, setShowCard] = useState(false);
+  const [valuation, setValuation] = useState(null);
+  const [payCard, setPayCard] = useState(true);
+
+  const lisencesObj = {
+    "Microsoft Office": 200,
+    "Adobe Creative Suite": 90,
+    "AutoCAD": 70,
+    "Antivirus Software": 140,
+    "Other": 50,
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,17 +38,25 @@ const Hero = () => {
       return;
     }
 
-    // Submit logic here
-    console.log("Submitting valuation:", {
-      lisenceType,
-      quantity: q,
-      years: y,
-    });
+    const pricePerUnit = lisencesObj[lisenceType] || 0;
+    const totalValuation = pricePerUnit * q * y;
 
-    // Optionally reset form or show success
-    setError(null);
-    alert("Valuation request submitted!");
+    setValuation(totalValuation);
+    setShowCard(true);
     setShowValuationForm(false);
+  };
+
+  const getPayment = () => {
+    setPayCard(false);
+    setTimeout(() => {
+      setShowCard(false);
+      setValuation(null);
+      setPayCard(true);
+    }, 2000);
+
+    setLisenceType("");
+    setQuantity(1);
+    setYears(1);
   };
 
   return (
@@ -49,7 +68,6 @@ const Hero = () => {
         <h1 className="text-2xl md:text-4xl font-bold">
           Monetize Your Software. Effortlessly.
         </h1>
-
         <p className="text-base md:text-lg mb-6 md:mb-10">
           SoftSell helps you unlock value from unused licenses — quick,
           compliant, and cash-ready.
@@ -64,21 +82,21 @@ const Hero = () => {
       </div>
 
       {showValuationForm && (
-        <div className="w-full mt-6 md:max-w-2xl mx-auto bg-white dark:bg-[#1e2229] p-6 rounded-xl shadow-lg">
-          <div className="flex justify-between items-center mx-auto md:max-w-xl">
-            <h3 className="text-2xl font-bold mb-4 text-black dark:text-white">
+        <div className="w-full border-t border-neutral-300 md:max-w-2xl mx-auto bg-white dark:bg-[#1e2229] p-6 rounded-xl shadow-lg">
+          <div className="flex justify-between items-center">
+            <h3 className="text-2xl font-bold text-black dark:text-white">
               License Valuation Form
             </h3>
             <BiWindowClose
-              className="w-8 h-8 mb-4 inline-block cursor-pointer"
+              className="w-8 h-8 cursor-pointer text-black dark:text-white"
               onClick={() => setShowValuationForm(false)}
             />
           </div>
 
           <form onSubmit={handleSubmit} action="#">
-            <div className="w-full md:max-w-xl mx-auto flex flex-col gap-4 justify-center items-center">
+            <div className="flex flex-col gap-4 mt-4">
               {error && (
-                <p className="text-red-600 text-center mb-4 font-semibold">
+                <p className="text-red-600 text-center font-semibold">
                   {error}
                 </p>
               )}
@@ -107,14 +125,50 @@ const Hero = () => {
 
               <button
                 type="submit"
-                className="w-full mt-2 text-white bg-[#000000] hover:bg-[#46464a] dark:bg-[#292e38] dark:hover:bg-[#383e4a] rounded-md py-2 px-4 font-semibold"
+                className="w-full text-white bg-[#000000] hover:bg-[#46464a] dark:bg-[#292e38] dark:hover:bg-[#383e4a] rounded-md py-2 px-4 font-semibold"
               >
                 Get Valuation
               </button>
             </div>
           </form>
+
         </div>
       )}
+
+      
+      {showCard && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="max-w-md w-full p-6 bg-white dark:bg-[#1e2229] rounded-xl shadow-lg">
+            {payCard ? (
+              <div className="text-center">
+                <div className="text-lg font-semibold mb-4">
+                  Your Valuation is: ₹{valuation}
+                </div>
+                <div className="flex justify-center gap-4 mt-4">
+                  <button
+                    className="text-white bg-[#000000] hover:bg-[#46464a] dark:bg-[#292e38] dark:hover:bg-[#383e4a] rounded-md py-2 px-5 font-semibold"
+                    onClick={() => setShowCard(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="text-white bg-[#000000] hover:bg-[#46464a] dark:bg-[#292e38] dark:hover:bg-[#383e4a] rounded-md py-2 px-5 font-semibold"
+                    onClick={getPayment}
+                  >
+                    Get Paid
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center text-green-500 text-lg font-semibold">
+                Your License is sold successfully for ₹
+                <span className="text-black dark:text-white">{valuation}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
     </main>
   );
 };
