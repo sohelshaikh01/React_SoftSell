@@ -2,7 +2,7 @@
 import './App.css';
 import HomePage from './Pages/HomePage.jsx';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function App() {
 

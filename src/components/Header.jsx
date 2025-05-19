@@ -12,10 +12,10 @@ const Header = () => {
 
     const changeTheme = () => {
         if(themeMode === "dark") {
-        dispatch(lightTheme());
+          dispatch(lightTheme());
         }
         else {
-        dispatch(darkTheme());
+          dispatch(darkTheme());
         }
     }
 
@@ -26,12 +26,9 @@ const Header = () => {
     <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
       
       {/* Logo + App Name */}
-      <div>
-        <a href="#home" className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2">
           <Logo className="w-7 h-7" />
           <span className="text-xl font-bold hidden sm:inline">SoftSell</span>
-        </a>
-        
       </div>
   
       {/* Navigation Links */}
@@ -39,15 +36,16 @@ const Header = () => {
         <a href="#home" className="px-3 py-[6px] rounded-full font-medium text-black dark:text-white hover:bg-[#979aa9] hover:text-white dark:hover:bg-[#7077A1] transition">
           Home
         </a>
-        <a href="#sell" className="px-3 py-[6px] rounded-full font-medium text-black dark:text-white hover:bg-[#9599a9] hover:text-white dark:hover:bg-[#7077A1] transition">
-          Sell
-        </a>
         <a href="#benefits" className="px-3 py-[6px] rounded-full font-medium text-black dark:text-white hover:bg-[#979aa9] hover:text-white dark:hover:bg-[#7077A1] transition">
           Benefits
         </a>
         <a href="#reviews" className="px-3 py-[6px] rounded-full font-medium text-black dark:text-white hover:bg-[#979aa9] hover:text-white dark:hover:bg-[#7077A1] transition">
           Reviews
         </a>
+        <a href="#contact" className="px-3 py-[6px] rounded-full font-medium text-black dark:text-white hover:bg-[#9599a9] hover:text-white dark:hover:bg-[#7077A1] transition">
+          Contact
+        </a>
+
   
         {/* Theme Toggle Button */}
         <button onClick={changeTheme}

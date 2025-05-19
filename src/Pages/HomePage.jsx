@@ -10,7 +10,7 @@ import  {
 const HomePage = () => {
   
   return (
-     <div className="w-full bg-[#F7F9FB] dark:bg-[#0D1117]">
+     <div className="w-full bg-[#ffffff8c] dark:bg-[#000000]">
       <div  className='max-w-7xl mx-auto scroll-smooth'>
 
         <Header />
